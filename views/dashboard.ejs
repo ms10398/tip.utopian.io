@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Utopian Tip </title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <style media="screen">
+    .loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      position: absolute;
+      top: 40%;
+      left: 45%;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loader" id="loader"></div>
+  <div><a style="padding: 10px; background: linear-gradient(135deg, #f21470 0%, #f26d91 100%); border-radius: 8px;position: fixed; right: 3%; top: 3%; text-decoration: none;color: white;" href="/auth/logout">Logout</a></div>
+  <section>
+    <form id="theForm" class="siform" autocomplete="off" method="post" action="vote">
+      <ol class="question">
+        <li class="current">
+          <span><label for="q">Paste the link below -</label></span>
+          <input id="q" name="q" type="text" />
+        </li>
+      </ol>
+      <p><input type="button" id="btn" value="Submit" class="btn"> </p>
+    </form>
+  </section>
+  <script type="text/javascript">
+    let loader = document.getElementById('loader')
+    function dontdisplay() {
+        loader.style.display = 'none';
+    }
+    dontdisplay();
+    let btn = document.getElementById('btn')
+    let form = document.getElementById('theForm')
+    btn.addEventListener('click', function() {
+      form.submit();
+      form.style.display = 'none';
+      loader.style.display = 'block';
+    })
+  </script>
+</body>
+
+</html>
