@@ -7,7 +7,7 @@
 var app = require('../app');
 // var debug = require('debug')('utopian-pay:server');
 var https = require('https');
-var fs = require('fs');
+// var fs =s require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -18,7 +18,7 @@ app.set('port', port);
 
 /**
  * Create HTTP server.
- */
+//  */
 var key = fs.readFileSync('privkey.pem')
 var cert = fs.readFileSync('fullchain.pem')
 

@@ -4,6 +4,8 @@ let steem = require('steem')
 let config = require('../config')
 let util = require('../modules/util')
 
+steem.api.setOptions({ url: 'https://api.steemit.com' });
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {

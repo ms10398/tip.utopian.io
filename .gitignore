@@ -11,6 +11,12 @@ yarn-error.log*
 
 config.js
 
+bin/www 
+
+routes/auth.js
+
+package-lock.json
+
 # Runtime data
 pids
 *.pid
