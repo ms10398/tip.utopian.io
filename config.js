@@ -4,7 +4,7 @@ let config = {
     redirect_uri: 'https://localhost/auth/'
   },
   session: {
-    secret: ''
+    secret: 'Thisisatopsecretsession'
   },
   moderators : [
     'amosbastian',
