@@ -47,7 +47,7 @@ router.post('/vote', util.isMod, async function(req, res, next) {
           }
           else {
             let permlink = new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
-            let body = `Hey @${author},\nHere's a tip for your valuable feedback! @utopian-io loves and incentives informative comments.\n\n**Contributing on Utopian**\nLearn how to contribute on <a href="https://join.utopian.io">our website</a>.\n\n**Want to chat? Join us on Discord https://discord.gg/h52nFrV.**\n\n<a href="https://v2.steemconnect.com/sign/account-witness-vote?witness=utopian-io&approve=1">Vote for Utopian Witness!</a>`;
+            let body = `Hey @${author}\nHere's a tip for your valuable feedback! @Utopian-io loves and incentivises informative comments.\n\n**Contributing on Utopian**\nLearn how to contribute on <a href="https://join.utopian.io">our website</a>.\n\n**Want to chat? Join us on Discord https://discord.gg/h52nFrV.**\n\n<a href="https://v2.steemconnect.com/sign/account-witness-vote?witness=utopian-io&approve=1">Vote for Utopian Witness!</a>`;
             steem.broadcast.comment(config.posting, parentAuthor, parentPermlink, config.voter, permlink, '', body, {
               tags: ['utopian.tip'],
               app: 'utopian-io'
