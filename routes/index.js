@@ -45,7 +45,7 @@ router.post('/vote', util.isMod, async function(req, res, next) {
           }
           else {
             let permlink = new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
-            let body = `Hey @${author}, Here's a tip for your work and efforts!\n\n-----\n Upvote this comment to support Utopian and increase your future rewards!`;
+            let body = `Hey @${author}, Here's a tip for your work and efforts!`;
             steem.broadcast.comment(config.posting, parentAuthor, parentPermlink, config.voter, permlink, '', body, {
               tags: ['utopian.tip'],
               app: 'utopian-io'

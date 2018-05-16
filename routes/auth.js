@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   } else {
     steem.setAccessToken(req.query.access_token)
     steem.me((err, steemResponse) => {
-      if (err) console.log(err)
+      if (err) res.redirect('/')
       console.log('yaha aaya hai');
       req.session.token = req.query.access_token
       req.session.steemconnect = steemResponse.account
