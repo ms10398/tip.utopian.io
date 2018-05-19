@@ -50,9 +50,18 @@ router.post('/vote', util.isMod, async function(req, res, next) {
     let comment;
     let author;
     let permlink;
-    comment = match[17].split("/")
-    author = comment[0].substring(2)
-    permlink = comment[1];
+    if (match[17]) {
+      comment = match[17].split("/")
+      author = comment[0].substring(2)
+      permlink = comment[1];
+    } else if (match[13]) {
+      comment = match[13].split("/")
+      author = comment[2].substring(1)
+      permlink = comment[3];
+    }
+    else {
+      res.redirect('/fail')
+    }
     console.log(author, permlink);
     if (cm == author) {
       logger.log({
@@ -65,8 +74,7 @@ router.post('/vote', util.isMod, async function(req, res, next) {
         console.log(err, result);
         if (err) {
           res.redirect('/fail')
-        }
-        else {
+        } else {
           let depth = result.depth;
           if (depth < 1) {
             logger.log({
