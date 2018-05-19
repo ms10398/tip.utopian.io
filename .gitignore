@@ -13,6 +13,8 @@ config.js
 
 bin/*
 
+logs/*
+
 routes/auth.js
 
 package-lock.json
