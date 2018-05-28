@@ -15,13 +15,14 @@ let config = {
     'sachincool',
     'imwatsi',
     'eastmael',
-    'buckydurdle',
-    'favau',
+    'buckydurddle',
+    'favcau',
     'knowledges',
     'espoem',
     'andrejcibik',
     'deathwing',
-    'jestemkioskiem'
+    'jestemkioskiem',
+    'jmromero'
   ],
   posting: "",
   voter: ''
