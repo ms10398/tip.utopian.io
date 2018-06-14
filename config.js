@@ -7,6 +7,11 @@ let config = {
     secret: 'Thisisatopsecretsession'
   },
   moderators : [
+    'lemouth', 
+    'alexdory', 
+    'katerinaramm', 
+    'egotheist', 
+    'gentleshaid',
     'amosbastian',
     'elear',
     'ms10398',
