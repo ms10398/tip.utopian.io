@@ -9,6 +9,8 @@ const path = require('path');
 const filename = path.join(__dirname, '../logs/vote.log');
 
 
+const whitelist = ['elear']
+
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
@@ -35,15 +37,34 @@ router.get('/dashboard', util.isMod, function(req, res, next) {
     level: 'info',
     message: `${cm} logged in`
   });
-  res.render('dashboard');
+
+  let isWhitelisted = false
+
+  for(mod of whitelist)
+  {
+    if(mod === cm)
+      isWhitelisted = true
+  }
+  res.render('dashboard', {
+    isWhitelisted
+  });
 });
 
 router.post('/vote', util.isMod, async function(req, res, next) {
 
   let cm = req.session.steemconnect.name;
+  let isWhitelisted = false
+  for(mod of whitelist)
+  {
+    if(mod === cm)
+      isWhitelisted = true
+  }
+  let tip=1
+  if(isWhitelisted)
+    tip = req.body.megatip? 3:1
   try {
     let link = req.body.q
-    let weight = 100
+    let weight = 100*tip
     let regex = /^(((([^:\/#\?]+:)?(?:(\/\/)((?:(([^:@\/#\?]+)(?:\:([^:@\/#\?]+))?)@)?(([^:\/#\?\]\[]+|\[[^\/\]@#?]+\])(?:\:([0-9]+))?))?)?)?((\/?(?:[^\/\?#]+\/+)*)([^\?#]*)))?(\?[^#]+)?)(#.*)?/;
     let match = regex.exec(link)
     // console.log(match);
@@ -83,6 +104,7 @@ router.post('/vote', util.isMod, async function(req, res, next) {
             });
             res.redirect('/fail')
           } else {
+            console.log(`Weight: ${weight}`);
             steem.broadcast.vote(config.posting, config.voter, author, permlink, weight, function(err, result) {
               let parentAuthor = author;
               let parentPermlink = permlink;
@@ -92,7 +114,7 @@ router.post('/vote', util.isMod, async function(req, res, next) {
               } else {
                 logger.log({
                   level: 'info',
-                  message: `${cm} voted ${parentAuthor} ${parentPermlink}`
+                  message: `${cm} voted ${parentAuthor} ${parentPermlink} with ${weight}`
                 });
                 let permlink = new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
                 let body = `Hey @${author}\nHere's a tip for your valuable feedback! @Utopian-io loves and incentivises informative comments.\n\n**Contributing on Utopian**\nLearn how to contribute on <a href="https://join.utopian.io">our website</a>.\n\n**Want to chat? Join us on Discord https://discord.gg/h52nFrV.**\n\n<a href="https://v2.steemconnect.com/sign/account-witness-vote?witness=utopian-io&approve=1">Vote for Utopian Witness!</a>`;

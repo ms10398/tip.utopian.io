@@ -209,9 +209,17 @@
         <input placeholder="" id="q" name="q" type="text" class="validate">
         <label for="q">Paste the link below -</label>
       </div>
-      <center>
-        <input type="button" id="btn" value="Submit" class="button">
-        </eenter>
+      <%if (isWhitelisted) { %>
+        <p>
+          <label>
+            <input type="checkbox" name="megatip" class="filled-in" />
+            <span>Mega Tip</span>
+          </label>
+        </p>
+      <% } %>
+          <center>
+            <input type="button" id="btn" value="Submit" class="button">
+          </center>
     </form>
   </main>
   <div id="footer" class="text-light" style="background: #24292e;">
