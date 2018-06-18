@@ -9,7 +9,7 @@ const path = require('path');
 const filename = path.join(__dirname, '../logs/vote.log');
 
 
-const whitelist = ['elear']
+const whitelist = config.whitelist
 
 const logger = winston.createLogger({
   transports: [

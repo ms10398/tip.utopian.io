@@ -29,6 +29,9 @@ let config = {
     'jestemkioskiem',
     'jmromero'
   ],
+  whitelist: [
+    'elear'
+  ],
   posting: "",
   voter: ''
 }
