@@ -1,16 +1,16 @@
 let config = {
   auth: {
     client_id: 'utopianpay',
-    redirect_uri: 'https://localhost/auth/'
+    redirect_uri: 'http://localhost/auth/'
   },
   session: {
     secret: 'Thisisatopsecretsession'
   },
   moderators : [
-    'lemouth', 
-    'alexdory', 
-    'katerinaramm', 
-    'egotheist', 
+    'lemouth',
+    'alexdory',
+    'katerinaramm',
+    'egotheist',
     'gentleshaid',
     'amosbastian',
     'elear',
