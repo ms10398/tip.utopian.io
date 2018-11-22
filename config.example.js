@@ -18,16 +18,15 @@ let config = {
     'techslut',
     'mcfarhat',
     'sachincool',
-    'imwatsi',
-    'eastmael',
     'buckydurddle',
     'favcau',
     'knowledges',
     'espoem',
     'andrejcibik',
-    'deathwing',
     'jestemkioskiem',
-    'jmromero'
+    'jmromero',
+    'iamstan',
+    'didic'
   ],
   whitelist: [
     'elear'
